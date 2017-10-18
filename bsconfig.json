@@ -13,8 +13,7 @@
       "subdirs": true
     },
     {
-      "dir": "example"
+      "dir": "example", "type": "dev"
     }
-  ],
-  "namespace": true,
+  ]
 }
