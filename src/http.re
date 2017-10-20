@@ -6,7 +6,6 @@ module Xhr = {
   external onReady : t => (unit => unit) => unit = "onreadystatechange" [@@bs.set];
   external onTimeout : t => (unit => unit) => unit = "ontimeout" [@@bs.set];
   external setRequestHeader : t => string => string => unit = "" [@@bs.send];
-  external onError : t => (unit => unit) => unit = "onerror" [@@bs.set];
   external open_ : t => string => string => unit = "open" [@@bs.send];
   external send : t => Js.null string => unit = "" [@@bs.send];
   external readyState : t => int = "" [@@bs.get];
@@ -14,7 +13,6 @@ module Xhr = {
   external statusText : t => string = "" [@@bs.get];
   external responseText : t => string = "" [@@bs.get];
   external getAllResponseHeaders : t => string = "" [@@bs.send];
-  external response : t => string = "" [@@bs.get];
 };
 
 let parseHeaders headers => 
@@ -55,7 +53,6 @@ let make ::method headers::userHeaders ::body=? url =>
         let statusText = Xhr.statusText request;
         let responseText = Xhr.responseText request;
         let responseHeaders = Xhr.getAllResponseHeaders request |> parseHeaders;
-        Js.log2 "Headers" responseHeaders;
         switch (Xhr.status request) {
           | 0 => fail (NetworkError)
           | status when status < 200 => fail @@ BadResponse status responseText
