@@ -56,7 +56,7 @@ type error =
 
 let rec setDefault = (key, value, lst) => switch lst {
   | [] => []
-  | [(k, v), ...xs] when key == k => lst
+  | [(k, _), ..._] when key == k => lst
   | [x, ...xs] => [x, ...setDefault(key, value, xs)]
 };
 
