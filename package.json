@@ -13,12 +13,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bs-json": "^0.2.3",
-    "bs-sentia-std": "^7.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "bs-platform": "^1.9.2",
+    "bs-platform": "^2.0.0",
     "webpack": "^1.14.0"
   }
 }

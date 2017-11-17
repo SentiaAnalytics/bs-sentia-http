@@ -6,7 +6,8 @@
   "name" : "bs-sentia-http",
   "reason" : {"react-jsx" : 2},
   "bsc-flags": ["-bs-super-errors"],
-  "bs-dependencies": ["bs-sentia-std", "bs-json"],
+  "refmt": 3,
+  "bs-dependencies": [],
   "sources": [
     {
       "dir": "src",
