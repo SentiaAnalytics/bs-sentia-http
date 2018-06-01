@@ -1,6 +1,6 @@
 open Http;
 
-open Js.Result;
+open Belt.Result;
 
 let callback = res =>
   switch (res) {

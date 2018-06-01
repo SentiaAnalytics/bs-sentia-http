@@ -44,20 +44,13 @@ type error =
   | NetworkError
   | BadResponse(response);
 
-let rec setDefault = (key, value, lst) =>
-  switch (lst) {
-  | [] => []
-  | [(k, _), ..._] when key == k => lst
-  | [x, ...xs] => [x, ...setDefault(key, value, xs)]
-  };
-
 let make = (~method as pub_, ~headers as userHeaders, ~body=?, url, callback) => {
   open Belt.Result;
   let fail = x => callback(Error(x));
   let succeed = x => callback(Ok(x));
   let request = Xhr.make();
   Xhr.open_(request, pub_, url);
-  let headers = setDefault("Content-Type", "application/json", userHeaders);
+  let headers = [("Content-Type", "application/json"), ...userHeaders];
   List.forEach(headers, ((k, v)) => Xhr.setRequestHeader(request, k, v));
   let onReady = () => {
     let readyState = Xhr.readyState(request);
