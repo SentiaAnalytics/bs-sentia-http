@@ -1,5 +1,5 @@
 {
-  "name": "bs-sentia-http",
+  "name": "@mesopo/http",
   "version": "2.0.2",
   "description": "",
   "main": "index.js",
