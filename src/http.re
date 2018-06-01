@@ -52,7 +52,7 @@ let rec setDefault = (key, value, lst) =>
   };
 
 let make = (~method as pub_, ~headers as userHeaders, ~body=?, url, callback) => {
-  open Js.Result;
+  open Belt.Result;
   let fail = x => callback(Error(x));
   let succeed = x => callback(Ok(x));
   let request = Xhr.make();
