@@ -8,7 +8,7 @@ type response = {
 type error =
   | Timeout
   | NetworkError
-  | BadResponse(int, string);
+  | BadResponse(response);
 
 let get: (~headers: list((string, string))=?, string, Js.Result.t(response, error) => unit) => unit;
 

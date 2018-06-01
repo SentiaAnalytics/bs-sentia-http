@@ -1,13 +1,16 @@
-This is a repo with examples usages of [ReasonReact](https://github.com/reasonml/reason-react).
-Have something you don't understand? Join us on [Discord](https://discord.gg/reasonml)!
+simple http library for reason/ocaml
 
-Run this project:
+
+#example
 
 ```
-npm install
-npm start
-# in another tab
-npm run webpack
-```
+let getUser =Http.get("https://api.example.com/user");
 
-After you see the webpack compilation succeed (the `npm run webpack` step), open up the nested html files in `src/*` (**no server needed!**). Then modify whichever file in `src` and refresh the page to see the changes.
+
+getUser @@ fun
+  | Error(TimeOut) => Js.log("TIMEOUT")
+  | Error(NetworkError) => 
+    Js.log("NETWORK ERROR. Are you connected to the internet?")
+  | Error(BadResponse(response)) => handleError(statusCode, body)
+  | Ok(response) => userFetched(response.body |> parseUser);
+```
