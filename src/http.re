@@ -58,7 +58,7 @@ let make = (~method as pub_, ~headers as userHeaders, ~body=?, url, callback) =>
   let request = Xhr.make();
   Xhr.open_(request, pub_, url);
   let headers = setDefault("Content-Type", "application/json", userHeaders);
-  List.forEach(headers, ((v, k)) => Xhr.setRequestHeader(request, k, v));
+  List.forEach(headers, ((k, v)) => Xhr.setRequestHeader(request, k, v));
   let onReady = () => {
     let readyState = Xhr.readyState(request);
     if (readyState == 4) {
